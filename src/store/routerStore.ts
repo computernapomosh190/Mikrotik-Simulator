@@ -14,6 +14,8 @@ interface RouterState {
   dnsStatic: DnsStatic[];
   addressLists: AddressList[];
   cliHistory: CliEntry[];
+  winboxConnected: boolean;
+  systemPanelVisited: boolean;
 }
 
 interface RouterInterface {
@@ -151,6 +153,8 @@ interface RouterActions {
   addAddressList: (entry: Omit<AddressList, 'id'>) => void;
   removeAddressList: (id: string) => void;
   addCliEntry: (entry: Omit<CliEntry, 'timestamp'>) => void;
+  setWinboxConnected: (v: boolean) => void;
+  setSystemPanelVisited: (v: boolean) => void;
   reset: () => void;
 }
 
@@ -176,6 +180,8 @@ const initialState: RouterState = {
   dnsStatic: [],
   addressLists: [],
   cliHistory: [],
+  winboxConnected: false,
+  systemPanelVisited: false,
 };
 
 const generateId = () => Math.random().toString(36).substring(2, 9);
@@ -359,6 +365,9 @@ export const useRouterStore = create<RouterState & RouterActions>((set, get) => 
       cliHistory: [...state.cliHistory, { ...entry, timestamp: new Date() }],
     }));
   },
+
+  setWinboxConnected: (v) => set({ winboxConnected: v }),
+  setSystemPanelVisited: (v) => set({ systemPanelVisited: v }),
 
   reset: () => {
     set(initialState);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouterStore } from '../../../store/routerStore';
 import { Settings, Cpu, Clock, Globe } from 'lucide-react';
 
@@ -6,6 +6,11 @@ export function SystemPanel() {
   const hostname = useRouterStore((s) => s.hostname);
   const [newHostname, setNewHostname] = useState(hostname);
   const setHostname = useRouterStore((s) => s.setHostname);
+  const setSystemPanelVisited = useRouterStore((s) => s.setSystemPanelVisited);
+
+  useEffect(() => {
+    setSystemPanelVisited(true);
+  }, [setSystemPanelVisited]);
 
   const handleHostnameChange = () => {
     if (newHostname && newHostname !== hostname) {
