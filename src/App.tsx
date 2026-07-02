@@ -11,6 +11,8 @@ import { AchievementsPage } from './pages/AchievementsPage';
 import { CertificatesPage } from './pages/CertificatesPage';
 import { LeaderboardPage } from './pages/LeaderboardPage';
 import { VerifyCertificatePage } from './pages/VerifyCertificatePage';
+import { CourseMaterialPage } from './pages/CourseMaterialPage';
+import { CourseQuizPage } from './pages/CourseQuizPage';
 import { Loader2 } from 'lucide-react';
 
 function AppRoutes() {
@@ -38,6 +40,8 @@ function AppRoutes() {
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/courses" element={<CoursesPage />} />
         <Route path="/courses/:courseId" element={<CourseDetailPage />} />
+        <Route path="/courses/:courseId/material/:materialId" element={<CourseMaterialPage />} />
+        <Route path="/courses/:courseId/quiz/:quizId" element={<CourseQuizPage />} />
         <Route path="/labs" element={<LabsPage />} />
         <Route path="/lab/:labId" element={<LabPage />} />
         <Route path="/achievements" element={<AchievementsPage />} />

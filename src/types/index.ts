@@ -219,6 +219,39 @@ export interface Certificate {
   pngUrl: string | null;
 }
 
+export type MaterialType = 'theory' | 'article' | 'video' | 'pdf' | 'summary';
+
+export interface CourseMaterial {
+  id: string;
+  courseId: string;
+  orderIndex: number;
+  title: string;
+  type: MaterialType;
+  content: string | null;
+  videoUrl: string | null;
+  pdfUrl: string | null;
+  imageUrls: string[];
+  createdAt: string;
+}
+
+export interface QuizQuestion {
+  id: number;
+  question: string;
+  options: string[];
+  correct: number;
+  explanation: string;
+}
+
+export interface CourseQuiz {
+  id: string;
+  courseId: string;
+  materialId: string | null;
+  title: string;
+  questions: QuizQuestion[];
+  orderIndex: number;
+  createdAt: string;
+}
+
 export interface ExamResult {
   id: string;
   courseId: string;
